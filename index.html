@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .context-menu {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      padding: 8px;
+      z-index: 1000;
+    }
+  </style>
+  <title>Context Menu Example</title>
+</head>
+<body>
+
+<div id="contextMenu" class="context-menu">
+  <ul>
+    <li id="menuItem1">Menu Item 1</li>
+    <li id="menuItem2">Menu Item 2</li>
+    <li id="menuItem3">Menu Item 3</li>
+  </ul>
+</div>
+
+<div id="targetElement" style="width: 200px; height: 100px; background-color: #eee;">
+  Right-click me to show the context menu.
+</div>
+
+<script>
+  const contextMenu = document.getElementById('contextMenu');
+  const targetElement = document.getElementById('targetElement');
+
+  targetElement.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    const x = e.clientX;
+    const y = e.clientY;
+    contextMenu.style.left = `${x}px`;
+    contextMenu.style.top = `${y}px`;
+    contextMenu.style.display = 'block';
+  });
+
+  document.addEventListener('click', () => {
+    contextMenu.style.display = 'none';
+  });
+
+  // You can add functionality for menu items here
+  document.getElementById('menuItem1').addEventListener('click', () => {
+    alert('Menu Item 1 clicked');
+  });
+
+  document.getElementById('menuItem2').addEventListener('click', () => {
+    alert('Menu Item 2 clicked');
+  });
+
+  document.getElementById('menuItem3').addEventListener('click', () => {
+    alert('Menu Item 3 clicked');
+  });
+</script>
+
+</body>
+</html>
